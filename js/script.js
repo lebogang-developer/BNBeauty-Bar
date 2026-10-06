@@ -600,7 +600,7 @@ whatsappBookingButton.addEventListener("click", () => {
    * 082 123 4567 becomes 27821234567
    */
 
-  const whatsappNumber = "27XXXXXXXXX";
+  const whatsappNumber = "27612793855";
 
   const message = `Hi BNBeauty Bar 👋
 
