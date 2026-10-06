@@ -120,11 +120,9 @@ button {
 }
 
 .logo img {
-  width: 115px;
-  height: auto;
-
+  width: 100px;
+  height: 75px;
   object-fit: contain;
-
   transition: transform var(--transition);
 }
 
