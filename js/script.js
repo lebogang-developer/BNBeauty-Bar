@@ -252,9 +252,10 @@ const mobileProgressBar = document.getElementById("mobileProgressBar");
 /* =========================================
    BOOKING DATA
 ========================================= */
-
 let bookingData = {
+  category: "",
   service: "",
+  price: 0,
   date: "",
   time: "",
   name: "",
@@ -346,21 +347,80 @@ function showBookingStep(step) {
    SERVICE SELECTION
 ========================================= */
 
-const serviceCards = document.querySelectorAll(".booking-service-card");
+// const serviceCards = document.querySelectorAll(".booking-service-card");
 
-const serviceInputs = document.querySelectorAll('input[name="bookingService"]');
+// const serviceInputs = document.querySelectorAll('input[name="bookingService"]');
 
-serviceInputs.forEach((input) => {
-  input.addEventListener("change", () => {
+// serviceInputs.forEach((input) => {
+//   input.addEventListener("change", () => {
+//     serviceCards.forEach((card) => {
+//       card.classList.remove("selected");
+//     });
+
+//     const selectedCard = input.closest(".booking-service-card");
+
+//     selectedCard.classList.add("selected");
+
+//     bookingData.service = input.value;
+
+//     document.getElementById("serviceError").classList.remove("show");
+//   });
+// });
+
+/* =========================================
+   SERVICE / TREATMENT SELECTION
+========================================= */
+
+const serviceSelects = document.querySelectorAll(".service-treatment-select");
+
+const serviceCards = document.querySelectorAll(".service-dropdown-card");
+
+serviceSelects.forEach((select) => {
+  select.addEventListener("change", () => {
+    /*
+     * Clear the other categories.
+     *
+     * For V1 a customer books one
+     * treatment per appointment request.
+     */
+
+    serviceSelects.forEach((otherSelect) => {
+      if (otherSelect !== select) {
+        otherSelect.value = "";
+      }
+    });
+
     serviceCards.forEach((card) => {
       card.classList.remove("selected");
     });
 
-    const selectedCard = input.closest(".booking-service-card");
+    /* Nothing selected */
+
+    if (!select.value) {
+      bookingData.category = "";
+      bookingData.service = "";
+      bookingData.price = 0;
+
+      return;
+    }
+
+    /* Selected option */
+
+    const selectedOption = select.options[select.selectedIndex];
+
+    bookingData.category = select.dataset.category;
+
+    bookingData.service = selectedOption.value;
+
+    bookingData.price = Number(selectedOption.dataset.price);
+
+    /* Highlight selected category */
+
+    const selectedCard = select.closest(".service-dropdown-card");
 
     selectedCard.classList.add("selected");
 
-    bookingData.service = input.value;
+    /* Remove error */
 
     document.getElementById("serviceError").classList.remove("show");
   });
@@ -546,20 +606,44 @@ function formatBookingDate(dateString) {
    REVIEW
 ========================================= */
 
+/* =========================================
+   POPULATE BOOKING REVIEW
+========================================= */
+
 function populateBookingReview() {
+  /* Category */
+
+  document.getElementById("reviewCategory").textContent = bookingData.category;
+
+  /* Treatment */
+
   document.getElementById("reviewService").textContent = bookingData.service;
+
+  /* Price */
+
+  document.getElementById("reviewPrice").textContent = `R${bookingData.price}`;
+
+  /* Date */
 
   document.getElementById("reviewDate").textContent = formatBookingDate(
     bookingData.date,
   );
 
+  /* Time */
+
   document.getElementById("reviewTime").textContent = bookingData.time;
+
+  /* Client */
 
   document.getElementById("reviewName").textContent = bookingData.name;
 
+  /* Phone */
+
   document.getElementById("reviewPhone").textContent = bookingData.phone;
 
-  /* Email */
+  /* =====================================
+       EMAIL
+    ====================================== */
 
   const emailContainer = document.getElementById("reviewEmailContainer");
 
@@ -571,7 +655,9 @@ function populateBookingReview() {
     emailContainer.style.display = "none";
   }
 
-  /* Notes */
+  /* =====================================
+       NOTES
+    ====================================== */
 
   const notesContainer = document.getElementById("reviewNotesContainer");
 
@@ -591,32 +677,29 @@ function populateBookingReview() {
 const whatsappBookingButton = document.getElementById("sendWhatsAppBooking");
 
 whatsappBookingButton.addEventListener("click", () => {
-  /*
-   * IMPORTANT:
-   * Replace this with the real BNBeauty
-   * Bar WhatsApp number.
-   *
-   * Example:
-   * 082 123 4567 becomes 27821234567
-   */
-
   const whatsappNumber = "27612793855";
 
   const message = `Hi BNBeauty Bar 👋
 
 I'd like to request an appointment.
 
-*Appointment Details*
+*APPOINTMENT DETAILS*
 
-Name: ${bookingData.name}
-Service: ${bookingData.service}
+Category: ${bookingData.category}
+Treatment: ${bookingData.service}
+Price: R${bookingData.price}
+
 Preferred Date: ${formatBookingDate(bookingData.date)}
 Preferred Time: ${bookingData.time}
+
+*CLIENT DETAILS*
+
+Name: ${bookingData.name}
 Phone: ${bookingData.phone}${bookingData.email ? `\nEmail: ${bookingData.email}` : ""}${bookingData.notes ? `\nNote: ${bookingData.notes}` : ""}
 
-Please let me know if this date and time are available.
+Please let me know if this appointment is available.
 
-Thank you.`;
+Thank you. ✨`;
 
   const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
@@ -624,49 +707,46 @@ Thank you.`;
 });
 
 /* =========================================
-   EMAIL BOOKING
+   EMAIL BOOKING REQUEST
 ========================================= */
 
 const sendBookingButton = document.getElementById("sendBookingRequest");
 
-sendBookingButton.addEventListener("click", async () => {
-  /*
-   * We'll connect this to the chosen
-   * email API.
-   *
-   * For now this demonstrates the
-   * success screen.
-   */
+sendBookingButton.addEventListener("click", () => {
+  const businessEmail = "Ntsayagaebonolo@gmail.com";
 
-  sendBookingButton.disabled = true;
+  const subject = `BNBeauty Bar Appointment Request - ${bookingData.service}`;
 
-  const originalHTML = sendBookingButton.innerHTML;
+  const body = `Hi BNBeauty Bar,
 
-  sendBookingButton.innerHTML = `
-            <span>
-                <i class="fa-solid fa-spinner fa-spin"></i>
-            </span>
+I would like to request an appointment.
 
-            <div>
-                <small>Please wait</small>
-                Sending Request...
-            </div>
-            `;
+APPOINTMENT DETAILS
+------------------------------
+Category: ${bookingData.category}
+Treatment: ${bookingData.service}
+Price: R${bookingData.price}
 
-  /*
-   * TEMPORARY DEMO
-   *
-   * Remove this timeout once the
-   * real email API is connected.
-   */
+Preferred Date: ${formatBookingDate(bookingData.date)}
+Preferred Time: ${bookingData.time}
 
-  setTimeout(() => {
-    showBookingSuccess();
+CLIENT DETAILS
+------------------------------
+Name: ${bookingData.name}
+Phone: ${bookingData.phone}
+Email: ${bookingData.email || "Not provided"}
+Notes: ${bookingData.notes || "None"}
 
-    sendBookingButton.disabled = false;
+Please let me know if this appointment is available.
 
-    sendBookingButton.innerHTML = originalHTML;
-  }, 900);
+Thank you.`;
+
+  const mailtoURL =
+    `mailto:${businessEmail}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoURL;
 });
 
 /* =========================================
@@ -705,10 +785,12 @@ function showBookingSuccess() {
 const newBookingButton = document.getElementById("newBookingRequest");
 
 newBookingButton.addEventListener("click", () => {
-  /* Reset data */
+  /* Reset booking data */
 
   bookingData = {
+    category: "",
     service: "",
+    price: 0,
     date: "",
     time: "",
     name: "",
@@ -717,24 +799,14 @@ newBookingButton.addEventListener("click", () => {
     notes: "",
   };
 
-  /* Service */
+  /* Reset service dropdowns */
 
-  serviceInputs.forEach((input) => {
-    input.checked = false;
+  serviceSelects.forEach((select) => {
+    select.value = "";
   });
 
   serviceCards.forEach((card) => {
     card.classList.remove("selected");
-  });
-
-  /* Date */
-
-  bookingDate.value = "";
-
-  /* Times */
-
-  timeButtons.forEach((button) => {
-    button.classList.remove("selected");
   });
 
   /* Fields */

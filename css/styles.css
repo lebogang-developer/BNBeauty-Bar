@@ -6004,6 +6004,128 @@ a.contact-detail:hover .contact-detail-arrow {
 }
 
 /* =========================================
+   BOOKING SERVICE DROPDOWNS
+========================================= */
+
+.service-dropdown-card {
+  align-items: flex-start;
+  cursor: default;
+}
+
+.service-dropdown-card:hover {
+  transform: none;
+}
+
+/* Allow service content to fill card */
+
+.service-dropdown-card .booking-service-info {
+  width: 100%;
+}
+
+/* =========================================
+   SELECT WRAPPER
+========================================= */
+
+.service-select-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  margin-top: 15px;
+}
+
+/* Select */
+
+.service-treatment-select {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 45px 0 15px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: var(--soft-cream);
+
+  border: 1px solid var(--border);
+
+  outline: none;
+
+  color: #655952;
+
+  font-family: var(--body-font);
+
+  font-size: 10.5px;
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.service-treatment-select:hover {
+  border-color: var(--primary-light);
+}
+
+.service-treatment-select:focus {
+  border-color: var(--primary);
+
+  background: var(--white);
+}
+
+/* Arrow */
+
+.service-select-wrapper > i {
+  position: absolute;
+
+  top: 50%;
+  right: 16px;
+
+  color: var(--primary);
+
+  font-size: 8px;
+
+  pointer-events: none;
+
+  transform: translateY(-50%);
+}
+
+/* Selected service */
+
+.service-dropdown-card.selected {
+  border-color: var(--primary);
+
+  background: #fff9f5;
+}
+
+.service-dropdown-card.selected .service-treatment-select {
+  border-color: rgba(184, 121, 95, 0.45);
+}
+
+/* Mobile */
+
+@media (max-width: 550px) {
+  .service-dropdown-card {
+    padding: 20px;
+  }
+
+  .service-dropdown-card .booking-service-icon {
+    margin-bottom: 15px;
+  }
+
+  .service-dropdown-card {
+    display: block;
+  }
+
+  .service-treatment-select {
+    height: 50px;
+
+    font-size: 10px;
+  }
+}
+
+/* =========================================
    MOBILE PROGRESS
 ========================================= */
 
@@ -6215,6 +6337,54 @@ a.contact-detail:hover .contact-detail-arrow {
 
   .booking-next-btn {
     gap: 9px;
+  }
+}
+
+.review-service-details {
+  flex: 1;
+}
+
+.review-service-price {
+  margin-left: auto;
+
+  padding-left: 20px;
+
+  text-align: right;
+}
+
+.review-service-price span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #998a82;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 1.3px;
+}
+
+.review-service-price strong {
+  color: var(--primary);
+
+  font-family: var(--heading-font);
+
+  font-size: 22px;
+
+  font-weight: 500;
+}
+
+@media (max-width: 450px) {
+  .review-service {
+    align-items: flex-start;
+  }
+
+  .review-service-price strong {
+    font-size: 19px;
   }
 }
 

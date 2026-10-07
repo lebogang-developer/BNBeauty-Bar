@@ -6,7 +6,7 @@
 
     <title>BNBeauty Bar | Lashes, Waxing & Gel Nails</title>
 
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -138,15 +138,27 @@
 
           <div class="social-line"></div>
 
-          <a href="https://www.instagram.com/Bnbeautybar" aria-label="Instagram" target="_blank">
+          <a
+            href="https://www.instagram.com/Bnbeautybar"
+            aria-label="Instagram"
+            target="_blank"
+          >
             <i class="fa-brands fa-instagram"></i>
           </a>
 
-          <a href="https://wa.me/27612793855" aria-label="WhatsApp" target="_blank">
+          <a
+            href="https://wa.me/27612793855"
+            aria-label="WhatsApp"
+            target="_blank"
+          >
             <i class="fa-brands fa-whatsapp"></i>
           </a>
 
-          <a href="https://www.tiktok.com/Bnbeautybar" aria-label="TikTok" target="_blank">
+          <a
+            href="https://www.tiktok.com/Bnbeautybar"
+            aria-label="TikTok"
+            target="_blank"
+          >
             <i class="fa-brands fa-tiktok"></i>
           </a>
         </div>
@@ -852,7 +864,12 @@
               </div>
             </div>
 
-            <a href="https:www.instagram.com/Bnbeautybar" class="instagram-link" target="_blank" rel="noopener">
+            <a
+              href="https:www.instagram.com/Bnbeautybar"
+              class="instagram-link"
+              target="_blank"
+              rel="noopener"
+            >
               @BNBeautyBar
 
               <span>
@@ -1033,29 +1050,29 @@
               </div>
 
               <!-- =================================
-                     STEP 01
-                     SERVICE
-                ================================== -->
+     STEP 01
+     SELECT SERVICE
+================================== -->
               <div class="booking-step active" data-step="1">
                 <div class="booking-step-header">
                   <span class="booking-step-label"> 01 — Treatment </span>
 
                   <h3>What can we do for you?</h3>
 
-                  <p>Select the beauty treatment you'd like to request.</p>
+                  <p>
+                    Choose a beauty service and select the treatment you'd like
+                    to request.
+                  </p>
                 </div>
 
                 <div class="booking-services">
-                  <!-- LASHES -->
-                  <label class="booking-service-card">
-                    <input
-                      type="radio"
-                      name="bookingService"
-                      value="Individual Lashes"
-                    />
-
-                    <span class="service-selector"></span>
-
+                  <!-- =================================
+             EYELASH EXTENSIONS
+        ================================== -->
+                  <div
+                    class="booking-service-card service-dropdown-card"
+                    data-service="Eyelash Extensions"
+                  >
                     <div class="booking-service-icon">
                       <i class="fa-regular fa-eye"></i>
                     </div>
@@ -1063,23 +1080,62 @@
                     <div class="booking-service-info">
                       <span>Eyes</span>
 
-                      <h4>Individual Lashes</h4>
+                      <h4>Eyelash Extensions</h4>
 
-                      <p>
-                        Beautiful individual lashes designed to complement your
-                        eyes.
-                      </p>
+                      <p>Choose your preferred lash treatment.</p>
+
+                      <!-- Dropdown -->
+                      <div class="service-select-wrapper">
+                        <select
+                          class="service-treatment-select"
+                          data-category="Eyelash Extensions"
+                        >
+                          <option value="">Select lash service</option>
+
+                          <option
+                            value="Classic Lash Extension"
+                            data-price="350"
+                          >
+                            Classic Lash Extension — R350
+                          </option>
+
+                          <option
+                            value="Hybrid Lash Extension"
+                            data-price="450"
+                          >
+                            Hybrid Lash Extension — R450
+                          </option>
+
+                          <option
+                            value="Volume Lash Extensions"
+                            data-price="500"
+                          >
+                            Volume Lash Extensions — R500
+                          </option>
+
+                          <option value="2 Weeks Refill" data-price="200">
+                            2 Weeks Refill — R200
+                          </option>
+
+                          <option value="Lash Removal" data-price="100">
+                            Lash Removal — R100
+                          </option>
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
                     </div>
 
                     <span class="booking-service-number"> 01 </span>
-                  </label>
+                  </div>
 
-                  <!-- WAXING -->
-                  <label class="booking-service-card">
-                    <input type="radio" name="bookingService" value="Waxing" />
-
-                    <span class="service-selector"></span>
-
+                  <!-- =================================
+             WAXING
+        ================================== -->
+                  <div
+                    class="booking-service-card service-dropdown-card"
+                    data-service="Waxing"
+                  >
                     <div class="booking-service-icon">
                       <i class="fa-solid fa-spa"></i>
                     </div>
@@ -1089,25 +1145,58 @@
 
                       <h4>Waxing</h4>
 
-                      <p>
-                        Professional waxing treatments for beautifully smooth
-                        skin.
-                      </p>
+                      <p>Choose your preferred waxing treatment.</p>
+
+                      <div class="service-select-wrapper">
+                        <select
+                          class="service-treatment-select"
+                          data-category="Waxing"
+                        >
+                          <option value="">Select waxing service</option>
+
+                          <option value="Underarms" data-price="150">
+                            Underarms — R150
+                          </option>
+
+                          <option value="Full Arms" data-price="200">
+                            Full Arms — R200
+                          </option>
+
+                          <option value="Chin" data-price="80">
+                            Chin — R80
+                          </option>
+
+                          <option value="Full Legs" data-price="300">
+                            Full Legs — R300
+                          </option>
+
+                          <option value="Bikini" data-price="180">
+                            Bikini — R180
+                          </option>
+
+                          <option value="Brazilian" data-price="250">
+                            Brazilian — R250
+                          </option>
+
+                          <option value="Hollywood" data-price="360">
+                            Hollywood — R360
+                          </option>
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
                     </div>
 
                     <span class="booking-service-number"> 02 </span>
-                  </label>
+                  </div>
 
-                  <!-- NAILS -->
-                  <label class="booking-service-card">
-                    <input
-                      type="radio"
-                      name="bookingService"
-                      value="Gel Nails"
-                    />
-
-                    <span class="service-selector"></span>
-
+                  <!-- =================================
+             NAILS
+        ================================== -->
+                  <div
+                    class="booking-service-card service-dropdown-card"
+                    data-service="Nails"
+                  >
                     <div class="booking-service-icon">
                       <i class="fa-solid fa-hand-sparkles"></i>
                     </div>
@@ -1117,18 +1206,55 @@
 
                       <h4>Gel Nails</h4>
 
-                      <p>
-                        Beautifully finished gel nails for a polished, stylish
-                        look.
-                      </p>
+                      <p>Choose your preferred nail treatment.</p>
+
+                      <div class="service-select-wrapper">
+                        <select
+                          class="service-treatment-select"
+                          data-category="Nails"
+                        >
+                          <option value="">Select nail service</option>
+
+                          <option value="Plain Gel Tips" data-price="300">
+                            Plain Gel Tips — R300
+                          </option>
+
+                          <option value="Gel Overlay" data-price="280">
+                            Gel Overlay — R280
+                          </option>
+
+                          <option value="French Gel Overlay" data-price="300">
+                            French Gel Overlay — R300
+                          </option>
+
+                          <option value="French Tips" data-price="350">
+                            French Tips — R350
+                          </option>
+
+                          <option value="Buff and Shine" data-price="180">
+                            Buff and Shine — R180
+                          </option>
+
+                          <option value="Gel Toes" data-price="150">
+                            Gel Toes — R150
+                          </option>
+
+                          <option value="French Toes" data-price="200">
+                            French Toes — R200
+                          </option>
+                        </select>
+
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
                     </div>
 
                     <span class="booking-service-number"> 03 </span>
-                  </label>
+                  </div>
                 </div>
 
+                <!-- Error -->
                 <p class="booking-error" id="serviceError">
-                  Please select a service before continuing.
+                  Please select a treatment before continuing.
                 </p>
 
                 <div class="booking-navigation booking-navigation-end">
@@ -1359,15 +1485,22 @@
 
                 <!-- Review Card -->
                 <div class="booking-review">
+                  <!-- Selected Treatment -->
                   <div class="review-service">
                     <div class="review-service-icon">
                       <i class="fa-solid fa-spa"></i>
                     </div>
 
-                    <div>
-                      <span>Your Treatment</span>
+                    <div class="review-service-details">
+                      <span id="reviewCategory"> Your Treatment </span>
 
-                      <h4 id="reviewService">Individual Lashes</h4>
+                      <h4 id="reviewService">—</h4>
+                    </div>
+
+                    <div class="review-service-price">
+                      <span>Price</span>
+
+                      <strong id="reviewPrice"> R0 </strong>
                     </div>
                   </div>
 
@@ -1444,7 +1577,8 @@
                     <strong> This is an appointment request. </strong>
 
                     Your appointment is not confirmed until BNBeauty Bar
-                    contacts you to confirm availability.
+                    contacts you to confirm availability. R150 nonefundable
+                    deposit is required to secure your appointment.
                   </p>
                 </div>
 
@@ -1896,7 +2030,12 @@
               </div>
 
               <!-- INSTAGRAM -->
-              <a href="https://www.instagram.com/Bnbeautybar" target="_blank" rel="noopener" class="contact-detail">
+              <a
+                href="https://www.instagram.com/Bnbeautybar"
+                target="_blank"
+                rel="noopener"
+                class="contact-detail"
+              >
                 <div class="contact-detail-top">
                   <div class="contact-detail-icon">
                     <i class="fa-brands fa-instagram"></i>
@@ -1978,11 +2117,19 @@
           </p>
 
           <div class="footer-socials">
-            <a href="https://www.instgram.com/Bnbeautybar" aria-label="Instagram" target="_blank">
+            <a
+              href="https://www.instgram.com/Bnbeautybar"
+              aria-label="Instagram"
+              target="_blank"
+            >
               <i class="fa-brands fa-instagram"></i>
             </a>
 
-            <a href="https://www.tiktok.com/Bnbeautybar" aria-label="TikTok" target="_blank">
+            <a
+              href="https://www.tiktok.com/Bnbeautybar"
+              aria-label="TikTok"
+              target="_blank"
+            >
               <i class="fa-brands fa-tiktok"></i>
             </a>
 
@@ -2073,7 +2220,9 @@
 
         <p class="developer-credit">
           Designed & Developed by
-          <a href="https://lebogang-developer.netlify.app/" target="_blank">LPS Web Solutions</a>
+          <a href="https://lebogang-developer.netlify.app/" target="_blank"
+            >LPS Web Solutions</a
+          >
         </p>
       </div>
     </footer>
